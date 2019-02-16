@@ -18,7 +18,6 @@ use Tree;
 /// Iterates over the ancestor `Node`s of a given `Node` in the `Tree`.  Each call to `next` will
 /// return an immutable reference to the next `Node` up the `Tree`.
 ///
-#[derive(Clone)]
 pub struct Ancestors<'a, T: 'a> {
     tree: &'a Tree<T>,
     node_id: Option<NodeId>,
@@ -63,7 +62,6 @@ impl<'a, T> Clone for Ancestors<'a, T> {
 ///
 /// Iterates over `NodeId`s instead of over the `Node`s themselves.
 ///
-#[derive(Clone)]
 pub struct AncestorIds<'a, T: 'a> {
     tree: &'a Tree<T>,
     node_id: Option<NodeId>,
@@ -109,7 +107,6 @@ impl<'a, T> Clone for AncestorIds<'a, T> {
 /// Iterates over the child `Node`s of a given `Node` in the `Tree`.  Each call to `next` will
 /// return an immutable reference to the next child `Node`.
 ///
-#[derive(Clone)]
 pub struct Children<'a, T: 'a> {
     tree: &'a Tree<T>,
     child_ids: Iter<'a, NodeId>,
@@ -175,7 +172,6 @@ impl<'a> Iterator for ChildrenIds<'a> {
 /// Iterates over all of the `Node`s in the sub-tree of a given `Node` in the `Tree`.  Each call to
 /// `next` will return an immutable reference to the next `Node` in Pre-Order Traversal order.
 ///
-#[derive(Clone)]
 pub struct PreOrderTraversal<'a, T: 'a> {
     tree: &'a Tree<T>,
     data: VecDeque<NodeId>,
@@ -279,7 +275,6 @@ impl<'a, T> Clone for PreOrderTraversalIds<'a, T> {
 /// Iterates over all of the `Node`s in the sub-tree of a given `Node` in the `Tree`.  Each call to
 /// `next` will return an immutable reference to the next `Node` in Post-Order Traversal order.
 ///
-#[derive(Clone)]
 pub struct PostOrderTraversal<'a, T: 'a> {
     tree: &'a Tree<T>,
     ids: IntoIter<NodeId>,
@@ -376,7 +371,6 @@ impl Iterator for PostOrderTraversalIds {
 /// Iterates over all of the `Node`s in the sub-tree of a given `Node` in the `Tree`.  Each call to
 /// `next` will return an immutable reference to the next `Node` in Level-Order Traversal order.
 ///
-#[derive(Clone)]
 pub struct LevelOrderTraversal<'a, T: 'a> {
     tree: &'a Tree<T>,
     data: VecDeque<NodeId>,
